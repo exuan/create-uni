@@ -1,15 +1,15 @@
 {
-  "name": "create-uni",
+  "name": "@create-uni/mcp",
   "type": "module",
-  "version": "2.4.0",
+  "version": "0.1.2",
   "packageManager": "pnpm@9.9.0",
-  "description": "轻松创建你的 uni-app 项目",
+  "description": "create-uni的mcp服务",
   "author": "FliPPeDround <flippedround@qq.com>",
   "license": "MIT",
   "funding": "https://afdian.com/a/flippedround",
   "homepage": "https://github.com/uni-helper/create-uni#readme",
   "repository": {
-    "directory": "packages/core",
+    "directory": "packages/mcp",
     "type": "git",
     "url": "git+https://github.com/uni-helper/create-uni.git"
   },
@@ -25,29 +25,24 @@
   ],
   "sideEffects": false,
   "bin": {
-    "create-uni": "dist/outfile.cjs"
+    "create-uni-mcp": "./dist/outfile.cjs"
   },
   "files": [
-    "dist/outfile.cjs",
-    "template"
+    "dist/outfile.cjs"
   ],
   "scripts": {
     "build": "tsup",
-    "dev": "cross-env CREATE_UNI_DEV=true tsup --watch",
+    "dev": "tsup --watch",
     "prepublishOnly": "nr build",
+    "inspect": "mcp-inspector",
     "release": "bumpp",
-    "up": "cd ./template && pnpx taze@latest major -w -r && cd ./base && pnpx @dcloudio/uvm@latest --manager pnpm"
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@clack/prompts": "^0.9.0",
-    "@create-uni/shared": "workspace:*",
+    "@modelcontextprotocol/inspector": "^0.16.6",
+    "@modelcontextprotocol/sdk": "^1.17.5",
     "@types/cross-spawn": "^6.0.6",
-    "@types/ejs": "^3.1.5",
-    "@types/minimist": "^1.2.5",
     "cross-spawn": "^7.0.6",
-    "ejs": "^3.1.10",
-    "json5": "^2.2.3",
-    "kolorist": "^1.8.0",
-    "minimist": "^1.2.8"
+    "zod": "3.25.68"
   }
 }
